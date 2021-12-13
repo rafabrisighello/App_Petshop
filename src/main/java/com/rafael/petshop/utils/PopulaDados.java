@@ -9,15 +9,20 @@ import org.springframework.stereotype.Component;
 
 import com.rafael.petshop.domain.Categoria;
 import com.rafael.petshop.domain.Cidade;
+import com.rafael.petshop.domain.Cliente;
+import com.rafael.petshop.domain.Endereco;
 import com.rafael.petshop.domain.Especie;
 import com.rafael.petshop.domain.Estado;
+import com.rafael.petshop.domain.Funcionario;
 import com.rafael.petshop.domain.Pet;
 import com.rafael.petshop.domain.Produto;
 import com.rafael.petshop.domain.Raca;
 import com.rafael.petshop.repository.CategoriaRepository;
 import com.rafael.petshop.repository.CidadeRepository;
+import com.rafael.petshop.repository.EnderecoRepository;
 import com.rafael.petshop.repository.EspecieRepository;
 import com.rafael.petshop.repository.EstadoRepository;
+import com.rafael.petshop.repository.PessoaRepository;
 import com.rafael.petshop.repository.PetRepository;
 import com.rafael.petshop.repository.ProdutoRepository;
 import com.rafael.petshop.repository.RacaRepository;
@@ -45,6 +50,14 @@ public class PopulaDados {
 	
 	@Autowired
 	CidadeRepository cidadeRepository;
+	
+	@Autowired
+	PessoaRepository pessoaRepository;
+	
+	@Autowired
+	EnderecoRepository enderecoRepository;
+	
+	
 	
 	
 	
@@ -101,5 +114,19 @@ public class PopulaDados {
 		
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(cid1, cid2, cid3));
+		
+		Cliente clt1 = new Cliente(null, "Jose Maria", "jose@mail.com", "335.194.320-21", "FISICA");
+		clt1.getTelefones().addAll(Arrays.asList("3516-2000", "9191-0000"));
+		
+		Funcionario fnc1 = new Funcionario(null, "Maria Jose", "maria@mail.com", "551.872.200-12", "ATENDENTE");
+		fnc1.getTelefones().addAll(Arrays.asList("3279-0001", "9090-0002"));
+		
+		Endereco end1 = new Endereco(null, "Rua Tupis", "500", "Apto 101", "Pindorama", "30111222", clt1, cid1);
+		Endereco end2 = new Endereco(null, "Av. Tamoios", "100", "Casa", "Oca", "3968000", fnc1, cid2);
+		Endereco end3 = new Endereco(null, "Rua Arañas", "10", "Apto 201", "Centro", "01153000", fnc1, cid3);
+		
+		pessoaRepository.saveAll(Arrays.asList(clt1, fnc1));
+		
+		enderecoRepository.saveAll(Arrays.asList(end1, end2, end3));
 	}
 }

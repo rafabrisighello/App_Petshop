@@ -82,13 +82,4 @@ public class Cidade implements Serializable {
 		this.estado = estado;
 	}
 
-	public List<Endereco> getEnderecos() {
-		return enderecos;
-	}
-
-	public void setEnderecos(List<Endereco> enderecos) {
-		this.enderecos = enderecos;
-	}
-	
-
 }

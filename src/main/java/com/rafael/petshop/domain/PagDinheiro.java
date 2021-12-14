@@ -11,7 +11,7 @@ public class PagDinheiro extends Pagamento {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Date dataPagamento;
+	private Date dataVencimento;
 	private Double desconto;
 	
 	public PagDinheiro() {
@@ -20,17 +20,17 @@ public class PagDinheiro extends Pagamento {
 
 	public PagDinheiro(Integer id, Double valor, SituacaoPagamento situacao, Servico servico, Date dataPagamento, Double desconto) {
 		super(id, valor, situacao, servico);
-		this.dataPagamento = dataPagamento;
+		this.dataVencimento = dataPagamento;
 		this.desconto = desconto;
 		// TODO Auto-generated constructor stub
 	}
 
 	public Date getDataPagamento() {
-		return dataPagamento;
+		return dataVencimento;
 	}
 
 	public void setDataPagamento(Date dataPagamento) {
-		this.dataPagamento = dataPagamento;
+		this.dataVencimento = dataPagamento;
 	}
 
 	public Double getDesconto() {

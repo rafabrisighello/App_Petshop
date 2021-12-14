@@ -56,7 +56,6 @@ public class PopulaDados {
 	@Autowired
 	EstadoRepository estadoRepository;
 	
-	
 	@Autowired
 	CidadeRepository cidadeRepository;
 	
